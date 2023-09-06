@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const add = function(a, b) => {
+const add = (a, b) => {
 	return a + b;
 };
 
