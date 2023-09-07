@@ -5,8 +5,11 @@ class Rectangle {
 		if ((w > 0) && (h > 0)) {
 			this.height = h;
 			this.width = w;
-		}
+		} else {
+		this.height = 0;
+		this.width = 0;
 	}
+}
 	print () {
 		for (let a = 0; a < this.height; a++) {
 			let size = '';
@@ -16,7 +19,7 @@ class Rectangle {
 			console.log(size);
 		}
 	}
-	rotate () {
+	rotate() {
 		const aux = this width;
 		this.width = this.height;
 		this.height = aux;
