@@ -10,10 +10,11 @@ class Rectangle {
 	print () {
 		for (let a = 0; a < this.height; a++) {
 			let size = '';
-		for (let b = 0; b < this.height; b++) {
-			size += 'X';
+			for (let b = 0; b < this.height; b++) {
+				size += 'X';
+			}
 		}
-			console.log(size);
+		console.log(size);
 		}
 	}
 }
