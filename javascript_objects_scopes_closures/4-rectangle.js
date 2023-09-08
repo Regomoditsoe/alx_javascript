@@ -20,9 +20,9 @@ class Rectangle {
 		}
 	}
 	rotate() {
-		const tamp = this width;
+		const temp = this.width;
 		this.width = this.height;
-		this.height = tamp;
+		this.height = temp;
 	}
 	double() {
 		this.height *= 2;
