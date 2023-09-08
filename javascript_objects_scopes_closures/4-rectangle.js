@@ -1,16 +1,16 @@
 #!/usr/bin/node
 
 class Rectangle {
-	constructor (w, h) {
+	constructor(w, h) {
 		if ((w > 0) && (h > 0)) {
 			this.height = h;
 			this.width = w;
 		} else {
-		this.height = 0;
-		this.width = 0;
+			this.height = 0;
+			this.width = 0;
 	}
 }
-	print () {
+	print() {
 		for (let a = 0; a < this.height; a++) {
 			let size = '';
 			for (let b = 0; b < this.width; b++) {
@@ -20,11 +20,11 @@ class Rectangle {
 		}
 	}
 	rotate() {
-		const aux = this width;
+		const tamp = this width;
 		this.width = this.height;
-		this.height = aux;
+		this.height = tamp;
 	}
-	double () {
+	double() {
 		this.height *= 2;
 		this.width *= 2;
 	}
