@@ -10,6 +10,6 @@ request(process.argv[2], function(error, response, body) {
 			return movie.characters.includes('https://swapi-api.hbtn.io/api/films/18')
 			?count + 1
 			:count;
-		}, 3))
+		}, 0))
 	}
 });
