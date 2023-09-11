@@ -9,7 +9,7 @@ request(process.argv[2], function(error, response, body) {
 		const count = results.reduce((count, movie) => {
 			return movie.characters.find((wedgeAntilles) => wedgeAntilles.endsWith('/18'))
 			? count + 1
-			: ocount;
+			: count;
 		}, 0)
 	}
 });
