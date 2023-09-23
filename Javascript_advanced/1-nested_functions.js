@@ -1,24 +1,23 @@
 #!/usr/bin/node
 
 
-var globalVariable(welcome) {
-	function outer() {
-		// alerts contents of the variable globalVariable
-		alert(globalVariable);
+var globalVariable = "welcome";
+function outer() {
+	// alerts contents of the variable globalVariable
+	alert(globalVariable);
 
-		// create variable named course
-		var course = "Holberton";
+	// create variable named course
+	var course = "Holberton";
 
-		function inner() {
-			alert(globalVariable + " " + course);
-			var exclamation = "!";
+	function inner() {
+		alert(globalVariable + " " + course);
+		var exclamation = "!";
 
-			function inception() {
-				alert(globalVariable + " " + course + exclamation);
-			}
-			inception();
+		function inception() {
+			alert(globalVariable + " " + course + exclamation);
 		}
-		inner();
+		inception();
 	}
-	outer();
+	inner();
 }
+outer();
