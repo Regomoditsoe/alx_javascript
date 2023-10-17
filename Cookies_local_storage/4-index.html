@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+        <head>
+                <meta charset='UTF-8'>
+                <meta name='viewport' content='width=device-width, initial-scale=1.0' >
+		<!-- Include js-cookie library -->
+		<script src='https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js'></script>
+		<title> Cookies And Local Storage </title>
+        </head>
+
+        <body>
+		<div id='loginDiv' style='display:none;'>
+                <H1>Login to the website </H1>
+                <input type='text' id='firstname' placeholder='Firstname' />
+                <input type='text' id='email' placeholder='Email'/>
+                <button onclick='setCookiesAndShowWelcomeMessage()'>Log me in</button> <br>
+
+		<!-- Welcome message and login form -->
+		<p id='welcomeMessage'></p>
+		<form id='loginForm'>
+
+                <H1>Cookies</H1>
+                <button onclick='showCookies()'>Show the cookies</button>
+
+                <script defer>
+                        function setCookiesAndShowWelcomeMessage() {
+                                const expiryDays = 10;
+                                const date = new Date();
+
+                                date.setTime(date.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
+				const expires = { expires: expiryDays };
+
+                                const firstNameInput = document.querySelector('#firstname');
+                                const emailInput = document.querySelector('#email');
+
+                                // Set Cookies using js-cookie's set function
+				Cookies.set('firstname', firstNameInput.value, expires);
+				Cookies.set('email', emailInput.value, expires);
+
+				// Call function to show welcome message or form
+				showWelcomeMessageOrForm();
+                 	 }
+                       	 function showCookies() {
+                        	const firstName = getCookie('firstname'); // Use js-cookie's get function
+                        	const email = getCookie('email'); // use js-cookie's get function
+                        	const pElement = document.createElement('p');
+                        	pElement.innerHTML = 'Email: ' + email + ' - Firstname: ' + firstName;
+
+                        	document.body.appendChild(pElement);
+                	}
+			function showForm() {
+                        	const welcomeMessage = document.getElementById('welcomeMessage');
+                        	const loginDiv = document.getElementById('loginDiv');
+                        	if (welcomeMessage) {
+                                welcomeMessage.style.display = 'none';
+                        }
+                        if (loginDiv) {
+                                loginForm.style.dislay = 'block';
+				}
+			}
+			function hideForm() {
+                        	const loginDiv = document.getElementById('loginDiv');
+                        	if (loginDiv) {
+                                	loginDiv.style.display = 'none';
+                        	}
+			}
+			function deleteCookiesAndShowForm() {
+                        	// Delete cookies
+                        	Cookies.remove('firstname');
+                        	Cookies.remove('email');
+                        	// Show the login form
+                        	showForm();
+                	}
+			function buildWelcomeMessage(firstName) {
+				const welcomeMessage = document.getElementById('welcomeMessage');
+				welcomeMessage.innerHTML = 'Welcome ' + firstName+ ' <a href='#' id='logoutLink'>(logout)</a>';
+				const logoutLink = document.getElementById('logoutLink');
+				
+				if (logoutLink) {
+					logoutLink.style.fontStyle = 'italic';
+					logoutLink.style.fontWeight = 'normal';
+					logoutLink.style.marginLeft = '10px';
+					logoutLink.onclick = function() {
+						deleteCookiesAndShowForm();
+						hideForm();
+						};
+					}
+			}
+			function showWelcomeMessageOrForm() {
+				const firstName = Cookies.get('firstname');
+				if (firstname) {
+					buildWelcomeMessage(firstName);
+					hideForm();
+				} else {
+					// if the user is not logged in, show the login form
+					showForm();
+				}
+			}
+        </script>
+</body>
+</html>

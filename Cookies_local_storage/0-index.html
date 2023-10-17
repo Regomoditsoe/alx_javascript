@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0' >
+		<title> Cookies And Local Storage </title>
+	</head>
+
+	<body>
+		<H1>Login to the website </H1>
+
+		<input type='text' id='firstname' placeholder='Firstname' />
+		<input type='text' id='email' placeholder='Email'/>
+		<button onclick='SetCookies()'>Log me in</button> <br>
+
+		<H1>Cookies</H1>
+
+		<button onClick='showCookies()'>Show the cookies</button>
+
+		<script defer>
+			function setCookies() {
+				const firtNameImput = document.querySelector('#firstname');
+				document.cookie = 'firstname=' + emailInput.value;
+			}
+			function showCookies() {
+				const emailInput = document.querySelector('#email');
+				document.cookie = 'email=' + emailInput.value;
+
+			}
+			function showCookies() {
+				const pElement = document.createElement('p');
+				pElement.innerHTML = 'Cookies:' + document.cookie
+				document.body.append(pElement);
+			}
+		</script>
+
+			
+	</body>
+</html>

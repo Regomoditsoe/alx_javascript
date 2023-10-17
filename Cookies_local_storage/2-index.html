@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+        <head>
+                <meta charset='UTF-8'>
+                <meta name='viewport' content='width=device-width, initial-scale=1.0' >
+                <title> Cookies And Local Storage </title>
+        </head>
+
+        <body>
+                <H1>Login to the website </H1>
+                <input type='text' id='firstname' placeholder='Firstname' />
+                <input type='text' id='email' placeholder='Email'/>
+                <button onclick='setCookies()'>Log me in</button> <br>
+
+                <H1>Cookies</H1>
+                <button onClick='showCookies()'>Show the cookies</button>
+
+                <script defer>
+                        function setCookies() {
+                                const expiryDays = 10;
+                                const date = new Date();
+
+                                date.setTime(date.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
+                                const expires = "expires=" + date.toUTCString();
+
+                                const firstNameInput = document.querySelector('#firstname');
+                                const emailInput = document.querySelector('#email');
+
+				// Set Cookies
+				document.cookie = 'firstname=' + firstNameInput.value + '; ' + expires;
+				document.cookie = 'email=' + emailInput.value + ';' + expires;
+                        }
+			function getCookie(name) {
+				const cookies = document.cookie.split(';');
+
+				for (let a = 0; a < cookies.length; a++) {
+					const cookie = cookies[a].trim();
+					if (cookie.startsWith(name + '=')) {
+						return decodeURIComponent(cookie.substring(name.length + 1));
+					}
+				}
+				return '';
+			}
+			function showCookies() {
+			const firstName = getCookie('firstname');
+			const email = getCookie('email');
+			const pElement = document.createElement('p');
+			pElement.innerHTML = 'Email: ' + email + ' - Firstname: ' + firstName;
+
+			document.body.appendChild(pElement);
+		}
+		</script>
+	</body>
+</html>
